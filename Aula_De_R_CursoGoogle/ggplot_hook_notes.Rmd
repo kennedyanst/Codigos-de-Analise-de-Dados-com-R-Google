@@ -1,0 +1,52 @@
+---
+title: "ggplot_hook"
+author: "Kennedy Anderson N Santos"
+date: "2022-08-20"
+output: pdf_document
+---
+
+
+# Estudo básico de plotagem de gráfico utilizando os dados de amostragem de
+pinguins do Arquipélago de Palmer, na Antártica
+
+
+
+## Configurando meu ambiente
+Nota: Configurando meu ambiente para o carregamento 
+das bibliotecas 'tidyverse' e 'palmerpenguins'.
+
+```{r carregamendo de pacotes, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Visualização
+Aqui veremos uma série de vizualizações
+
+## Nadadeira e Massa Corporal em roxo. 
+Gráfico ilustrando a correlação das nadadeiras com a massa corpora, em roxo. 
+
+```{r visualizando nadadeira e massa corporal em roxo, message=FALSE, warning=FALSE}
+ggplot(data=penguins, aes(x=flipper_length_mm, y=body_mass_g))+
+  geom_point(color="purple")
+```
+
+
+## Nadadeira e Massa Corporal por Espécie
+Aqui veremos a correlação da nadadeira e a massa corporal, agora,
+adicionaremos o fator espécie. 
+
+```{r visualizando nadadeira e massa corporal por espécie, warning=FALSE}
+ggplot(data=penguins, aes(x=flipper_length_mm, y=body_mass_g))+
+  geom_point(aes(shape=species))
+```
+
+## Nadadeira e Massa Corporal por Espécie e Sexo
+Neste gráfico, o fator espécie será adicionado também
+
+```{r visualizando nadadeira e massa corporal por espécie e sexo, warning=FALSE}
+ggplot(data=penguins, aes(x=flipper_length_mm, y=body_mass_g))+
+  geom_point(aes(color=species,
+                 shape=species)) + facet_wrap(~sex)
+```
+
